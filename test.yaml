@@ -1,0 +1,36 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test-pvc
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Mi
+  storageClassName: "nfs-client"
+
+---
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-pod
+spec:
+  containers:
+  - name: test-pod
+    image: busybox
+    imagePullPolicy: IfNotPresent
+    command:
+    - "/bin/sh"
+    args:
+    - "-c"
+    - "touch /mnt/SUCCESS && exit 0 || exit 1"
+    volumeMounts:
+    - name: nfs-pvc
+      mountPath: "/mnt"
+  restartPolicy: "Never"
+  volumes:
+  - name: nfs-pvc
+    persistentVolumeClaim:
+      claimName: test-pvc
