@@ -15,7 +15,5 @@ services:
          - SYS_ADMIN
          - SETPCAP
       volumes:
-
          - ../nfs:/nfs
-         - ./conf/export.txt:/etc/exports
       privileged: true
