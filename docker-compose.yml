@@ -17,3 +17,4 @@ services:
          - "32767:32767/udp"
       volumes:
          - ../nfs:/nfs
+      privileged: true
