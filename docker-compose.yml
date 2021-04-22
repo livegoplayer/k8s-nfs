@@ -17,4 +17,3 @@ services:
          - ../nfs:/nfs
          - ./conf/export.txt:/etc/exports
       privileged: true
-      command: cat /etc/exports
