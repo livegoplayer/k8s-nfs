@@ -17,4 +17,5 @@ services:
          - "32767:32767/udp"
       volumes:
          - ../nfs:/nfs
+         - ./conf//exports.txt /etc/exports
       privileged: true
