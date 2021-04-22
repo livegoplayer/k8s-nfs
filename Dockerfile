@@ -1,4 +1,4 @@
-FROM itsthenetwork/nfs-server-alpine
+FROM gists/nfs-server
 
 RUN mkdir /nfs
 RUN chmod -R 777 /nfs
