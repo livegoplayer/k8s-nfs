@@ -1,2 +1,1 @@
-#nfs 目录分享给所有域名所有人，当客户端以任何登录的时候，更改为nfs用户的劝降
 /nfs *(rw,all_squash,anonuid=1001,anongid=1001)
