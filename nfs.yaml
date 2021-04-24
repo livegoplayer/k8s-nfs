@@ -21,7 +21,7 @@ spec:
   capacity:
     storage: 20Gi
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual
   hostPath:
@@ -45,7 +45,7 @@ spec:
   capacity:
     storage: 5Gi
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   storageClassName: app-storage
   hostPath:
@@ -66,7 +66,7 @@ metadata:
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 20Gi
@@ -78,7 +78,7 @@ metadata:
 spec:
   storageClassName: app-storage
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 5Gi
@@ -113,12 +113,6 @@ spec:
         env:
         - name: NFS_EXPORT_0
           value: '/some/container/path/dynamic               *(rw,no_subtree_check,no_root_squash)'
-        - name: NFS_EXPORT_1
-          value: '/some/container/path/mysql                 *(rw,no_subtree_check,no_root_squash)'
-        - name: NFS_EXPORT_2
-          value: '/some/container/path/redis                 *(rw,no_subtree_check,no_root_squash)'
-        - name: NFS_EXPORT_3
-          value: '/some/container/path/harbor                *(rw,no_subtree_check,no_root_squash)'
         - name: NFS_EXPORT_4
           value: '/apps                                      *(rw,no_subtree_check,no_root_squash)'
         volumeMounts:
