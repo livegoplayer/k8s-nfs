@@ -113,9 +113,9 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: NFS_EXPORT_0
-          value: '/some/container/path/dynamic               *(rw,no_subtree_check,no_root_squash)'
+          value: '/some/container/path/dynamic               *(rw,all_squash,anonuid=0,anongid=0)'
         - name: NFS_EXPORT_4
-          value: '/apps                                      *(rw,no_subtree_check,no_root_squash)'
+          value: '/apps                                      *(rw,all_squash,anonuid=0,anongid=0)'
         volumeMounts:
         - mountPath: /some/container/path
           name: nfs-pv-storage
