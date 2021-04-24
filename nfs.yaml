@@ -116,7 +116,7 @@ spec:
     #      value: '/some/container/path/dynamic               *(rw,all_squash,anonuid=0,anongid=0)'
         - name: NFS_EXPORT_0
           value: '/apps                                      *(rw,all_squash,anonuid=0,anongid=0)'
-    #    volumeMounts:
+        volumeMounts:
     #    - mountPath: /some/container/path
     #      name: nfs-pv-storage
         - mountPath: /apps
