@@ -33,7 +33,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - www.52db.club
+          - localhost.kvm-1
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -57,7 +57,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - www.52db.club
+          - localhost.kvm-1
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -99,7 +99,7 @@ spec:
         app: nfs
     spec:
       hostNetwork: true
-      nodeName: www.52db.club
+      nodeName: localhost.kvm-1
       volumes:
       - name: nfs-pv-storage
         persistentVolumeClaim:
