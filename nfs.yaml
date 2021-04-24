@@ -114,7 +114,7 @@ spec:
         env:
         - name: NFS_EXPORT_0
           value: '/some/container/path/dynamic               *(rw,all_squash,anonuid=0,anongid=0)'
-        - name: NFS_EXPORT_4
+        - name: NFS_EXPORT_1
           value: '/apps                                      *(rw,all_squash,anonuid=0,anongid=0)'
         volumeMounts:
         - mountPath: /some/container/path
