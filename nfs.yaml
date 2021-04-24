@@ -10,30 +10,30 @@ metadata:
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 provisioner: kubernetes.io/host-path
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: local-pv-volume
-  labels:
-    type: nfs_volome
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-  - ReadWriteMany
-  persistentVolumeReclaimPolicy: Retain
-  storageClassName: manual
-  hostPath:
-    path: /nfs
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - localhost.kvm-1
+#---
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: local-pv-volume
+#  labels:
+#    type: nfs_volome
+#spec:
+#  capacity:
+#    storage: 20Gi
+#  accessModes:
+#  - ReadWriteMany
+#  persistentVolumeReclaimPolicy: Retain
+#  storageClassName: manual
+#  hostPath:
+#    path: /nfs
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: kubernetes.io/hostname
+#          operator: In
+#          values:
+#          - localhost.kvm-1
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -58,18 +58,18 @@ spec:
           operator: In
           values:
           - localhost.kvm-1
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: local-pv-claim
-spec:
-  storageClassName: manual
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 20Gi
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: local-pv-claim
+#spec:
+#  storageClassName: manual
+#  accessModes:
+#    - ReadWriteMany
+#  resources:
+#    requests:
+#      storage: 20Gi
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -112,13 +112,13 @@ spec:
         image: erichough/nfs-server 
         imagePullPolicy: IfNotPresent
         env:
+    #    - name: NFS_EXPORT_0
+    #      value: '/some/container/path/dynamic               *(rw,all_squash,anonuid=0,anongid=0)'
         - name: NFS_EXPORT_0
-          value: '/some/container/path/dynamic               *(rw,all_squash,anonuid=0,anongid=0)'
-        - name: NFS_EXPORT_1
           value: '/apps                                      *(rw,all_squash,anonuid=0,anongid=0)'
-        volumeMounts:
-        - mountPath: /some/container/path
-          name: nfs-pv-storage
+    #    volumeMounts:
+    #    - mountPath: /some/container/path
+    #      name: nfs-pv-storage
         - mountPath: /apps
           name: app-pv-storage
         securityContext:
