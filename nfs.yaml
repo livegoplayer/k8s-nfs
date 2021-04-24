@@ -110,6 +110,7 @@ spec:
       containers:
       - name: nfs-server
         image: erichough/nfs-server 
+        imagePullPolicy: IfNotPresent
         env:
         - name: NFS_EXPORT_0
           value: '/some/container/path/dynamic               *(rw,no_subtree_check,no_root_squash)'
